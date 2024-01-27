@@ -4,13 +4,20 @@ import Bar from "./components/Bar"
 function App() {
 
   const [ username , setUsername] = useState<string>("")
-  const [data , setData] = useState<{username: string}[]>([])
+  const [data , setData] = useState<{username: string , createdAt : Date}[]>([])
 
   const handleClick = () => {
     if(username.trim().length == 0) {
       setUsername("")
     }else{
-      
+      fetch('http://localhost:3000/username' , {
+        method : 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify({username})
+      })
+      setUsername('')
     }
   }
 
@@ -21,8 +28,9 @@ function App() {
     } )
     .then(res => res.json())
     .then(res => setData(res))
-  } , [])
+  } , [data])
 
+  
 
   return (
     <div className='text-slate-100'>
@@ -46,7 +54,7 @@ function App() {
 
         {
           data.map((data ,index) => {
-            return <Bar key={index} index={index+1} name={data.username} date={new Date().toLocaleDateString()} />
+            return <Bar key={index} index={index+1} name={data.username} date={data.createdAt} />
           })
         }
 

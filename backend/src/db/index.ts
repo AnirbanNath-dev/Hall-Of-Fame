@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
+import { DATA } from "../constants.js";
 
 const connectDB = async ()=>{
 
     try {
         
-        const connectionInstance = await mongoose.connect(`mongodb+srv://anirdina0101:Anirban123@cluster0.rsjc7jo.mongodb.net/hall_of_fame`)
+        const connectionInstance = await mongoose.connect(`${DATA.mongodbUri}/${DATA.dbName}`)
         console.log('\nMongodb connected successfully : ' + connectionInstance.connection.host );
         
 
