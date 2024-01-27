@@ -4,6 +4,7 @@ import Bar from "./components/Bar"
 function App() {
 
   const [ username , setUsername] = useState<string>("")
+  const [data , setData] = useState<{username: string}[]>([])
 
   const handleClick = () => {
     if(username.trim().length == 0) {
@@ -15,7 +16,11 @@ function App() {
 
 
   useEffect(()=> {
-    
+    fetch(`http://localhost:3000/usernames` , {
+      method : "GET"
+    } )
+    .then(res => res.json())
+    .then(res => setData(res))
   } , [])
 
 
@@ -39,7 +44,11 @@ function App() {
 
       <div className=' w-10/12 lg:w-1/2 mx-auto flex flex-col gap-5' >
 
-        <Bar index={1} name="Anirban" date="12/12/12"/>
+        {
+          data.map((data ,index) => {
+            return <Bar key={index} index={index+1} name={data.username} date={new Date().toLocaleDateString()} />
+          })
+        }
 
 
 
