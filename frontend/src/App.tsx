@@ -8,7 +8,7 @@ function App() {
   const [data , setData] = useState<{username: string , createdAt : Date}[]>([])
 
   const handleClick = () => {
-    if(username.trim().length == 0) {
+    if(username.trim().length == 0 || username.trim().length > 10) {
       setUsername("")
     }else{
       fetch(`${DATA.dbUri}/username` , {
@@ -16,7 +16,7 @@ function App() {
         headers : {
           'Content-Type' : 'application/json'
         },
-        body : JSON.stringify({username})
+        body : JSON.stringify({username : username.trim()}),
       })
       setUsername('')
     }
@@ -40,7 +40,7 @@ function App() {
         <div className=' w-10/12 lg:w-1/2 mx-auto flex justify-center my-10 gap-2'>
             <input 
             type="text" 
-            placeholder='Enter your name...' 
+            placeholder='Enter your name (max: 10)...' 
             className='rounded border-2 outline-none border-[#292929] bg-transparent sm:text-2xl text-md p-2 w-3/4 sm:w-1/2'
             onChange={(e)=> setUsername(e.target.value)}
             value={username}
