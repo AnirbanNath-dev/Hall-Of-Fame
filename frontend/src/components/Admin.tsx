@@ -59,6 +59,7 @@ return (
         type="text" 
         placeholder="Delete element" 
         onChange={(e) => setId(e.target.value)}
+        value={id}
         className="rounded bg-transparent border-2 p-2 text-lg md:text-xl" />
 
         <button onClick={handleClick} className="rounded border-2 active:hover:scale-90 py-3 px-5 text-lg md:text-xl border-red-500 bg-red-500 text-white">Delete</button>

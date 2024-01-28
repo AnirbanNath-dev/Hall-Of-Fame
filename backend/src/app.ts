@@ -47,7 +47,7 @@ app.delete('/admin' , async (req, res)=>{
 
     if(password == DATA.password && username == DATA.username){
 
-        User.deleteOne({_id : id})
+        await User.deleteOne({_id : id})
 
         res.json({
             success : true,
