@@ -51,7 +51,7 @@ function App() {
             >Enter</button>
         </div>
 
-      <div className='w-11/12 sm:w-10/12 lg:w-1/2 mx-auto flex flex-col gap-3 sm:gap-5' >
+      <div className='w-full sm:w-10/12 lg:w-1/2 mx-auto items-center flex flex-col gap-3 sm:gap-5' >
 
         {
           data.map((data ,index) => {
