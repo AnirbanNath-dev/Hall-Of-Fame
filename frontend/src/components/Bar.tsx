@@ -15,7 +15,7 @@ function Bar({index , name , date} : {index : number, name : string , date : Dat
 
   return (
     <>
-    <div className='hover:scale-105 transition-all duration-500 flex justify-around border-2 p-2 md:p-4 rounded-md border-[#292929] bg-[#141414] cursor-pointer text-sm md:text-xl text-slate-200 opacity-90'>
+    <div className='hover:scale-105 transition-all duration-500 flex justify-around border-2 p-3 sm:p-4 rounded-md border-[#292929] bg-[#141414] cursor-pointer text-sm sm:text-xl text-slate-200 opacity-90'>
             <span className="hidden sm:block">{index}</span>
             <span className=''>{name}</span><span>{date.toLocaleString().split('T')[0]}</span>
             <span>{time}</span>
