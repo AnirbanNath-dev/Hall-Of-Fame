@@ -34,7 +34,9 @@ function App() {
   
 
   return (
+    
     <div className='text-slate-100'>
+      
       <h1 className='sm:my-14 text-center p-10 text-2xl sm:text-4xl uppercase font-light tracking-[3px] md:tracking-[5px]'>Hall of Fame</h1>
 
         <div className=' w-10/12 lg:w-1/2 mx-auto flex justify-center my-10 gap-2'>
@@ -51,17 +53,14 @@ function App() {
             >Enter</button>
         </div>
 
-      <div className='w-full sm:w-10/12 lg:w-1/2 mx-auto items-center flex flex-col gap-3 sm:gap-5' >
+      <div className='w-full sm:w-10/12 lg:w-1/2 mx-auto items-center flex flex-col gap-3 sm:gap-5 mb-6' >
 
         {
           data.map((data ,index) => {
             return <Bar key={index} index={index+1} name={data.username} date={data.createdAt} />
           })
         }
-
-
-
-
+        
       </div>
 
     </div>
