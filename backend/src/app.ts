@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import User from "./models/User.model.js";
+import { DATA } from "./constants.js";
 
 const app = express();
 
@@ -36,6 +37,26 @@ app.get('/usernames' , async (req, res)=>{
             message : "error in getting data"
         })
     }
+})
+
+app.delete('/admin' , async (req, res)=>{
+    const password : string = req.body.password;
+    const username : string = req.body.username;
+    const id : string = req.body.id;
+
+
+    if(password == DATA.password && username == DATA.username){
+
+        User.deleteOne({_id : id})
+
+        res.json({
+            success : true,
+        })
+        return
+    } 
+    res.json({
+        success : false,
+    })
 })
 
 
