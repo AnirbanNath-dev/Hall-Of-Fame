@@ -6,6 +6,7 @@ function App() {
 
   const [ username , setUsername] = useState<string>("")
   const [data , setData] = useState<{username: string , createdAt : Date}[]>([])
+  const [loading , setLoading] = useState<boolean>(true)
 
   const handleClick = () => {
     if(username.trim().length == 0 || username.trim().length > 10) {
@@ -24,11 +25,13 @@ function App() {
 
 
   useEffect(()=> {
+    setLoading(true)
     fetch(`${DATA.dbUri}/usernames` , {
       method : "GET"
     } )
     .then(res => res.json())
     .then(res => setData(res))
+    setLoading(false)
   } , [data])
 
   
@@ -56,9 +59,12 @@ function App() {
       <div className='w-full sm:w-10/12 lg:w-1/2 mx-auto items-center flex flex-col gap-3 sm:gap-5 mb-6' >
 
         {
+          loading ? <span className="text-lg sm:text-2xl tracking-widest ">Loading...</span> : (
+
           data.map((data ,index) => {
             return <Bar key={index} index={index+1} name={data.username} date={data.createdAt} />
           })
+          )
         }
         
       </div>
