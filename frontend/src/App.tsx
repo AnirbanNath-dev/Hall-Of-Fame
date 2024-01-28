@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Bar from "./components/Bar"
+import { DATA } from "./constants"
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
     if(username.trim().length == 0) {
       setUsername("")
     }else{
-      fetch('http://localhost:3000/username' , {
+      fetch(`${DATA.dbUri}/username` , {
         method : 'POST',
         headers : {
           'Content-Type' : 'application/json'
@@ -23,7 +24,7 @@ function App() {
 
 
   useEffect(()=> {
-    fetch(`http://localhost:3000/usernames` , {
+    fetch(`${DATA.dbUri}/usernames` , {
       method : "GET"
     } )
     .then(res => res.json())
@@ -34,23 +35,23 @@ function App() {
 
   return (
     <div className='text-slate-100'>
-      <h1 className='my-14 text-center p-10 text-3xl sm:text-4xl uppercase font-light tracking-[2px] md:tracking-[5px]'>Hall of Fame</h1>
+      <h1 className='sm:my-14 text-center p-10 text-2xl sm:text-4xl uppercase font-light tracking-[3px] md:tracking-[5px]'>Hall of Fame</h1>
 
         <div className=' w-10/12 lg:w-1/2 mx-auto flex justify-center my-10 gap-2'>
             <input 
             type="text" 
             placeholder='Enter your name...' 
-            className='rounded border-2 outline-none border-[#292929] bg-transparent md:text-2xl text-xl p-2'
+            className='rounded border-2 outline-none border-[#292929] bg-transparent sm:text-2xl text-md p-2 w-3/4 sm:w-1/2'
             onChange={(e)=> setUsername(e.target.value)}
             value={username}
             />
             <button 
-            className='rounded border-2 text-xl px-5 border-[#292929] bg-[#272727] outline-none active:scale-90'
+            className='rounded border-2 text-md sm:text-xl px-3 sm:px-5 border-[#292929] bg-[#272727] outline-none active:scale-90'
             onClick={handleClick}
             >Enter</button>
         </div>
 
-      <div className=' w-10/12 lg:w-1/2 mx-auto flex flex-col gap-5' >
+      <div className='w-11/12 sm:w-10/12 lg:w-1/2 mx-auto flex flex-col gap-3 sm:gap-5' >
 
         {
           data.map((data ,index) => {
