@@ -41,7 +41,7 @@ function App() {
             <input 
             type="text" 
             placeholder='Enter your name (max: 10)...' 
-            className='rounded border-2 outline-none border-[#292929] bg-transparent sm:text-2xl text-md p-2 w-3/4 sm:w-1/2'
+            className='rounded border-2 outline-none border-[#292929] bg-transparent sm:text-2xl text-md py-2 px-2 sm:px-5 w-3/4 sm:w-1/2'
             onChange={(e)=> setUsername(e.target.value)}
             value={username}
             />
