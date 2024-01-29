@@ -30,8 +30,11 @@ function App() {
       method : "GET"
     } )
     .then(res => res.json())
-    .then(res => setData(res))
-    setLoading(false)
+    .then(res => {
+      setData(res)
+      setLoading(false)
+    })
+    
   } , [data])
 
   
