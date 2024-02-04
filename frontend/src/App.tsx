@@ -20,12 +20,14 @@ function App() {
         body : JSON.stringify({username : username.trim()}),
       })
       setUsername('')
+      setLoading(true)
     }
   }
 
+  
 
   useEffect(()=> {
-    setLoading(true)
+    
     fetch(`${DATA.dbUri}/usernames` , {
       method : "GET"
     } )
@@ -35,7 +37,8 @@ function App() {
       setLoading(false)
     })
     
-  } , [data])
+  } , [loading])
+
 
   
 

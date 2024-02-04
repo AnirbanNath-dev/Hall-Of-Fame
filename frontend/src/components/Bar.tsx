@@ -1,4 +1,4 @@
-
+import React from "react"
 
 function Bar({index , name , date} : {index : number, name : string , date : Date}) {
   
@@ -15,4 +15,4 @@ function Bar({index , name , date} : {index : number, name : string , date : Dat
   )
 }
 
-export default Bar
+export default React.memo(Bar)

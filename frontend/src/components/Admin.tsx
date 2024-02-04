@@ -21,7 +21,6 @@ function Admin() {
         try {
 
             const dltElement: string = data[parseInt(id) - 1]._id
-            console.log(dltElement)
 
             fetch(`${DATA.dbUri}/admin` , {
                 method : "DELETE",
@@ -31,8 +30,6 @@ function Admin() {
                 body : JSON.stringify({username : username.trim(), password : password.trim() , id : dltElement})
             })
 
-            setUsername('')
-            setPassword('')
             setId('')
         } catch {
             setId('')
